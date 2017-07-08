@@ -8,4 +8,8 @@ class Dealer
     4.times {@players << Player.new}
   end
 
+  def shuffle_deck
+    self.deck.shuffle_cards
+  end
+
 end

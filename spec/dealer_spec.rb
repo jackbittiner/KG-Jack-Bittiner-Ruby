@@ -15,4 +15,11 @@ describe Dealer do
       expect(dealer.players.length).to eq 4
     end
   end
+
+  describe '#shuffle_deck' do
+    it 'shuffles the deck so that there are no two cards in sequence' do
+      dealer.shuffle_deck
+      expect(dealer.deck.shuffled).to be true
+    end
+  end
 end
