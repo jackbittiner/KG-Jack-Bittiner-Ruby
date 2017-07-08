@@ -26,4 +26,13 @@ class Deck
     return @shuffled
   end
 
+  def shuffle_cards
+    @cards.shuffle
+    check_for_sequence?
+    until self.shuffled = true
+      @cards.shuffle
+      check_for_sequence?
+    end
+  end
+
 end

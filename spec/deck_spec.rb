@@ -31,4 +31,11 @@ describe Deck do
       expect(deck.check_for_sequence?).to be true
     end
   end
+
+  describe '#shuffle_cards' do
+    it 'returns a randomised deck of cards with no sequences' do
+      deck.shuffle_cards
+      expect(deck.shuffled).to eq true
+    end
+  end
 end
