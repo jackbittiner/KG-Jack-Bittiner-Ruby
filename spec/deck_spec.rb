@@ -21,4 +21,14 @@ describe Deck do
       expect(deck.card_sequences[0][1].rank).to eq 2
     end
   end
+
+  describe '#check_for_sequence?' do
+    it 'sets the attribute shuffled to true if no two cards are in sequence' do
+      expect(deck.check_for_sequence?).to be false
+    end
+    it 'sets the attribute shuffled to false if two cards or more are in sequence' do
+      deck.cards = []
+      expect(deck.check_for_sequence?).to be true
+    end
+  end
 end
