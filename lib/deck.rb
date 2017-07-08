@@ -19,10 +19,10 @@ class Deck
 
 
   def shuffle_cards
-    self.cards = self.cards.shuffle
+    self.cards.shuffle!
     check_for_sequence?
     until self.shuffled = true
-      self.cards = self.cards.shuffle!
+      self.cards.shuffle!
       check_for_sequence?
     end
   end
@@ -30,7 +30,7 @@ class Deck
   private
 
   attr_writer :cards, :shuffled
-  
+
   def check_for_sequence?
     self.shuffled = true
     self.card_sequences.each do |sequent|

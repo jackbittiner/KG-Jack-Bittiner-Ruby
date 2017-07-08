@@ -10,5 +10,9 @@ describe Dealer do
       expect(dealer.deck.cards.length).to eq 52
       expect(dealer.deck.shuffled).to be false
     end
+
+    it 'is initialized with 4 players' do
+      expect(dealer.players.length).to eq 4
+    end
   end
 end
