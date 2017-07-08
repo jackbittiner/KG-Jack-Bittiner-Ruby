@@ -4,7 +4,6 @@ class Deck
   SUITS = ['H', 'C', 'S', 'D']
 
   attr_reader :cards, :card_sequences, :shuffled
-  attr_writer :cards, :shuffled
 
   def initialize
     @cards = []
@@ -18,20 +17,24 @@ class Deck
     @cards.each_cons(2) { |a, b| @card_sequences << [a, b] }
   end
 
+
+  def shuffle_cards
+    self.cards = self.cards.shuffle
+    check_for_sequence?
+    until self.shuffled = true
+      self.cards = self.cards.shuffle!
+      check_for_sequence?
+    end
+  end
+
+  private
+
+  attr_writer :cards, :shuffled
+  
   def check_for_sequence?
     self.shuffled = true
     self.card_sequences.each do |sequent|
       self.shuffled = false if self.cards.each_cons(2).include? sequent
-    end
-    return self.shuffled
-  end
-
-  def shuffle_cards
-    self.cards.shuffle
-    check_for_sequence?
-    until self.shuffled = true
-      self.cards.shuffle
-      check_for_sequence?
     end
   end
 
