@@ -19,18 +19,18 @@ class Deck
   end
 
   def check_for_sequence?
-    @shuffled = true
-    @card_sequences.each do |sequent|
-      self.shuffled = false if @cards.each_cons(2).include? sequent
+    self.shuffled = true
+    self.card_sequences.each do |sequent|
+      self.shuffled = false if self.cards.each_cons(2).include? sequent
     end
-    return @shuffled
+    return self.shuffled
   end
 
   def shuffle_cards
-    @cards.shuffle
+    self.cards.shuffle
     check_for_sequence?
     until self.shuffled = true
-      @cards.shuffle
+      self.cards.shuffle
       check_for_sequence?
     end
   end
