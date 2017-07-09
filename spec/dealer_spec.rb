@@ -53,4 +53,30 @@ describe Dealer do
       expect {dealer.deal_cards}.to raise_error "Return cards and shuffle before dealing again!"
     end
   end
+
+  describe '#return_cards_and_shuffle' do
+    it 'returns all the cards back to the deck' do
+      dealer.shuffle_deck
+      dealer.deal_cards
+      dealer.return_cards_and_shuffle
+      expect(dealer.deck.cards.length).to eq 52
+    end
+
+    it 'returns empties the players hands' do
+      dealer.shuffle_deck
+      dealer.deal_cards
+      dealer.return_cards_and_shuffle
+      expect(dealer.players[0].hand).to eq []
+      expect(dealer.players[1].hand).to eq []
+      expect(dealer.players[2].hand).to eq []
+      expect(dealer.players[3].hand).to eq []
+    end
+
+    it 'shuffles the deck afterwards to maintain no sequences' do
+      dealer.shuffle_deck
+      dealer.deal_cards
+      dealer.return_cards_and_shuffle
+      expect(dealer.deck.shuffled).to be true
+    end
+  end
 end

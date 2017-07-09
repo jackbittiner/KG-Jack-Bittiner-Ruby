@@ -22,6 +22,14 @@ class Dealer
     end
   end
 
+  def return_cards_and_shuffle
+    self.players.each do |player|
+      self.deck.cards.concat player.hand
+      player.hand.clear
+    end
+    shuffle_deck
+  end
+
   private
 
   def able_to_deal_cards?
