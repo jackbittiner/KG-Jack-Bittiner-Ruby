@@ -42,5 +42,9 @@ describe Dealer do
       expect(dealer.players[2].hand[0]).to eq card3
       expect(dealer.players[3].hand[0]).to eq card4
     end
+
+    it 'raises an error if you try to deal without the deck being shuffled' do
+      expect {dealer.deal_cards}.to raise_error "Deck is not shuffled!"
+    end
   end
 end
