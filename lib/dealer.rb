@@ -12,4 +12,13 @@ class Dealer
     self.deck.shuffle_cards
   end
 
+  def deal_cards
+    7.times do
+      (0..3).each do |num|
+        self.players[num].hand << self.deck.cards[0]
+        self.deck.cards.shift
+      end
+    end
+  end
+
 end
