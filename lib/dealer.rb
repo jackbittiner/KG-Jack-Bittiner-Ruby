@@ -14,6 +14,7 @@ class Dealer
 
   def deal_cards
     fail "Deck is not shuffled!" if self.deck.shuffled != true
+    fail "Return cards and shuffle before dealing again!" if self.deck.cards.length < 52
     7.times do
       (0..3).each do |num|
         self.players[num].hand << self.deck.cards[0]

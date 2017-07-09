@@ -46,5 +46,11 @@ describe Dealer do
     it 'raises an error if you try to deal without the deck being shuffled' do
       expect {dealer.deal_cards}.to raise_error "Deck is not shuffled!"
     end
+
+    it 'raises an error if you try to deal cards when cards have already been dealt' do
+      dealer.shuffle_deck
+      dealer.deal_cards
+      expect {dealer.deal_cards}.to raise_error "Return cards and shuffle before dealing again!"
+    end
   end
 end
