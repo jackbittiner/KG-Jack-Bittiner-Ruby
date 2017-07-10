@@ -7,13 +7,9 @@ class Deck
 
   def initialize
     @cards = []
+    create_deck
     @card_sequences = []
     @shuffled = false
-    SUITS.each do |suit|
-      RANKS.each do |rank|
-        @cards << Card.new(rank, suit)
-      end
-    end
     @cards.each_cons(2) { |a, b| @card_sequences << [a, b] }
   end
 
@@ -35,6 +31,14 @@ class Deck
     self.shuffled = true
     self.card_sequences.each do |sequent|
       self.shuffled = false if self.cards.each_cons(2).include? sequent
+    end
+  end
+
+  def create_deck
+    SUITS.each do |suit|
+      RANKS.each do |rank|
+        @cards << Card.new(rank, suit)
+      end
     end
   end
 
